@@ -18,51 +18,6 @@ async def getWeatherData(lat, lon):
         print('Error fetching weather data:', e)
         return None
 
-# Function to fetch Geoapify data for accommodations
-async def getAccommodationsData(lat, lon):
-    apiKey = 'c60a9acdc1984edeb402b29ad11381bd'  # Replace with your Geoapify API key
-    category = 'accommodation.hotel'
-    radius = 2000
-    apiUrl = f'https://api.geoapify.com/v2/places?categories={category}&filter=circle:{lon},{lat},{radius}&limit=3&apiKey={apiKey}'
-
-    try:
-        response = await requests.get(apiUrl)
-        data = response.json()
-        return data
-    except requests.RequestException as e:
-        print('Error fetching accommodations data:', e)
-        return None
-
-# Function to fetch Geoapify data for sights
-async def getSightsData(lat, lon):
-    apiKey = 'c60a9acdc1984edeb402b29ad11381bd'  # Replace with your Geoapify API key
-    category = 'tourism.sights'
-    radius = 2000
-    apiUrl = f'https://api.geoapify.com/v2/places?categories={category}&filter=circle:{lon},{lat},{radius}&limit=3&apiKey={apiKey}'
-
-    try:
-        response = await requests.get(apiUrl)
-        data = response.json()
-        return data
-    except requests.RequestException as e:
-        print('Error fetching sights data:', e)
-        return None
-
-# Function to fetch Geoapify data for food and drink
-async def getFoodAndDrinkData(lat, lon):
-    apiKey = 'c60a9acdc1984edeb402b29ad11381bd'  # Replace with your Geoapify API key
-    category = 'commercial.food_and_drink'
-    radius = 2000
-    apiUrl = f'https://api.geoapify.com/v2/places?categories={category}&filter=circle:{lon},{lat},{radius}&limit=3&apiKey={apiKey}'
-
-    try:
-        response = await requests.get(apiUrl)
-        data = response.json()
-        return data
-    except requests.RequestException as e:
-        print('Error fetching food and drink data:', e)
-        return None
-
 # Function to convert location name to coordinates using LocationIQ API
 async def getLocationCoordinates(location):
     apiKey = 'pk.1628022f589a6bec5a2e4b2e449d83b1'  # LocationIQ API key

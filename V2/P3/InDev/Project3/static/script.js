@@ -22,7 +22,7 @@ async function getWeatherData(lat, lon) {
 // Function to fetch Geoapify data for Accommodations, Sights, and Food & Drink
 async function getGeoapifyData(lat, lon, category) {
     const apiKey = 'c60a9acdc1984edeb402b29ad11381bd'; // Replace with your Geoapify API key
-    const apiUrl = `https://api.geoapify.com/v2/places?categories=${category}&filter=circle:${lon},${lat},2000&limit=3&apiKey=${apiKey}`;
+    const apiUrl = `https://api.geoapify.com/v2/places?categories=${category}&bias=proximity:${lon},${lat}&limit=3&apiKey=${apiKey}`;
 
     try {
         const response = await fetch(apiUrl);
@@ -73,8 +73,8 @@ document.getElementById('searchButton').addEventListener('click', async () => {
         await getWeatherData(latitude, longitude);
         // Fetch Geoapify data for Accommodations, Sights, and Food & Drink for the selected location
         const accommodationsData = await getGeoapifyData(latitude, longitude, 'accommodation.hotel');
-        const sightsData = await getGeoapifyData(latitude, longitude, 'tourism.sights');
-        const foodAndDrinkData = await getGeoapifyData(latitude, longitude, 'commercial.food_and_drink');
+        const sightsData = await getGeoapifyData(latitude, longitude, 'entertainment.culture');
+        const foodAndDrinkData = await getGeoapifyData(latitude, longitude, 'catering.restaurant');
         // Call other APIs and update the UI accordingly
         updateGeoapifyUI(accommodationsData, sightsData, foodAndDrinkData);
     }
@@ -105,7 +105,6 @@ function updateGeoapifyUI(accommodationsData, sightsData, foodAndDrinkData) {
         accommodationsData.features.forEach((place, index) => {
             geoapifyContainer.innerHTML += `
                 <p>${index + 1}. ${place.properties.name}</p>
-                <p>Category: ${place.properties.category}</p>
                 <p>Address: ${place.properties.formatted}</p>
             `;
         });
@@ -118,7 +117,6 @@ function updateGeoapifyUI(accommodationsData, sightsData, foodAndDrinkData) {
         sightsData.features.forEach((place, index) => {
             geoapifyContainer.innerHTML += `
                 <p>${index + 1}. ${place.properties.name}</p>
-                <p>Category: ${place.properties.category}</p>
                 <p>Address: ${place.properties.formatted}</p>
             `;
         });
@@ -131,7 +129,6 @@ function updateGeoapifyUI(accommodationsData, sightsData, foodAndDrinkData) {
         foodAndDrinkData.features.forEach((place, index) => {
             geoapifyContainer.innerHTML += `
                 <p>${index + 1}. ${place.properties.name}</p>
-                <p>Category: ${place.properties.category}</p>
                 <p>Address: ${place.properties.formatted}</p>
             `;
         });
