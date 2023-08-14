@@ -15,8 +15,26 @@
         </div>
     </div>
     <div id="dataContainer">
-        <div id="weatherContainer"></div>
-        <div id="geoapifyContainer"></div>
+        <div id="weatherContainer">
+            <h2 id="weatherForecast">Weather Forecast for the Next Three Days</h2>
+            <!-- Other weather-related elements with specific IDs can be added here -->
+        </div>
+        <div id="geoapifyContainer">
+            <h2 id="placesOfInterest">Places of Interest</h2>
+            <h3 id="closestAccommodations">Closest 3 Accommodations</h3>
+            <h3 id="closestSights">Closest 3 Sights</h3>
+            <h3 id="closestRestaurants">Closest 3 Restaurants</h3>
+        </div>
+    </div>
+    <!-- Language Selector -->
+    <div id="languageSelector">
+        <select id="language" onchange="changeLanguage()">
+            <option value="en" selected>English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="it">Italiano</option>
+            <option value="de">Deutsch</option>
+        </select>
     </div>
     <!-- Leaflet library -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
