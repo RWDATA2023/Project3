@@ -15,7 +15,7 @@
 
   ---
 
-## Code setup and Steps
+## Code setup and Analysis
   - Used Flask App to run the files
   - HTML and JS code enacted a pull from the APIs with a search on the search bar
   - It then Returns a 3 day weather forecast and top 3 accommodations, sights, and restaurants in that area
