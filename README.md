@@ -11,7 +11,7 @@
 ## Datasets used
 - Weather API
 - GeoApify
-- Location IQ
+- LocationIQ
 
   ---
 
